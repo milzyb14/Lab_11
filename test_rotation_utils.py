@@ -30,3 +30,25 @@ def test_non_numeric_raises_type_error():
     """Passing a string should raise a TypeError."""
     with pytest.raises(TypeError):
         adjust_rotation("ABC")
+
+# Additional Edge Cases 
+
+def test_zero():
+    """Input of 0 should return 0."""
+    assert adjust_rotation(0) == 0
+
+def test_exactly_360():
+    """Input of 360 should wrap to 0."""
+    assert adjust_rotation(360) == 0
+
+def test_exactly_720():
+    """Input of 720 should wrap to 0."""
+    assert adjust_rotation(720) == 0
+
+def test_positive_float():
+    """Floating point input like 100.5 should be handled correctly."""
+    assert adjust_rotation(100.5) == 100.5
+
+def test_negative_float():
+    """Negative floating point input like -45.5 should wrap correctly."""
+    assert adjust_rotation(-45.5) == 314.5
